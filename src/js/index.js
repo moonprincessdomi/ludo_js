@@ -1,7 +1,6 @@
 /* 
 LUDO GAME
 
-PROJECTS STRUCTURE
 1. NEW ELEMENT APPER AS DIV TYPE
 2. WHEN THE DICE IS APER, PROGRAM RANDOM DICE VALUE AND ON DICE APPER THIS NUMBER OF EYES
 3. THE ROLL ELEMENT IS ALWAYS VISIBLE ON THE LEFT SITE OF DISPALY
@@ -90,6 +89,10 @@ switch (dice_value) {
         default:
             break;
     }
+}
+
+function loadBoard() {
+    console.log("aaa");
 }
 
 document.getElementById("roll").onclick = diceRoll;

@@ -8,7 +8,8 @@ body {
 
 .content{
     height: 100%;
-    display: block;
+    display: grid;
+    grid-auto-columns: min-content;
 }
 
 nav{
@@ -107,6 +108,15 @@ footer{
 }
 main{
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 200px 50px auto 50px;
     grid-template-rows: auto;
+    grid-template-areas: 
+    "dice . gameboard";
+}
+
+.gameboard{
+    display: grid;
+    grid-area: gameboard;
+    grid-template-columns: 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px;
+    grid-template-rows: 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px;
 }
