@@ -1,22 +1,27 @@
 body {
-    height: 100%;
     margin: 0;
-    background-color: darkgray;
-    font-size: 20px;
-    font-family: 'Aldrich';
-}
+    padding: 0;
+} 
 
 .content{
     height: 100%;
     width: 100%;
+    position:absolute;
     display: grid;
-    grid-auto-columns: min-content;
-    grid-template-rows: 100px 100px auto 100px;
+    grid-auto-columns: 100%;
+    grid-template-rows: 100px 60px auto 100px;
+    grid-auto-rows: max-content;
+    grid-gap: 10px;
     grid-template-areas: 
     "nav"
     "start"
     "main"
     "footer";
+    margin: 0;
+    padding: 0;
+    background-color: darkgray;
+    font-size: 20px;
+    font-family: 'Aldrich';
 }
 
 nav{
@@ -70,14 +75,16 @@ button:hover{
 
 footer{
     font-size:10px;
-    padding: 20px;
     background-color: lightblue;
     color:darkgray;
     bottom: 0px;
-    position: fixed;
     width:100%;
     text-align: center;
     grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 /* DICE ROLL PART */
@@ -85,6 +92,7 @@ footer{
     font-size:12px;
     padding: 20px;
     text-align: center;
+    grid-area:dice;
 }
 
 .dice{
@@ -116,17 +124,17 @@ footer{
 }
 main{
     display: grid;
-    grid-template-columns: 200px 50px auto 50px;
+    grid-template-columns: auto 200px auto auto auto 200px auto;
     grid-template-rows: auto;
     grid-template-areas: 
-    "dice . gameboard";
+    ". dice . gameboard . score .";
     grid-area: main;
 }
 
 /*GAMEBOARD PART*/
 
 .gameboard{
-    display: grid;
+    display: none;
     grid-area: gameboard;
     grid-gap:5px;
     grid-template-columns:50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
@@ -183,3 +191,33 @@ main{
 .start{
     grid-area: start;
 }
+
+.score{
+    grid-area:score;
+    text-align: center;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid lightblue;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

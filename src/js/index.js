@@ -1,11 +1,3 @@
-/* 
-LUDO GAME
-
-1. NEW ELEMENT APPER AS DIV TYPE
-2. WHEN THE DICE IS APER, PROGRAM RANDOM DICE VALUE AND ON DICE APPER THIS NUMBER OF EYES
-3. THE ROLL ELEMENT IS ALWAYS VISIBLE ON THE LEFT SITE OF DISPALY
-4. BOARD APPER AS DIV, AND THE PAWN APPER AS CIRCLE DIV AND DISAPEAR WHEN ABANDOM A FIELD
-*/
 
 /*Element mean element id*/
 
@@ -96,7 +88,8 @@ function loadBoard() {
     // for(let i= 1; i <=30; i++){
     //     document.getElementById(i).style.gridArea = "field"+ i;
     // }
-
+    document.getElementById("loader").style.display="none";
+    document.getElementById("gameboard").style.display="grid";
     const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
     for(let i = 0; i <childBoards.length;i++){
         let childBoard = childBoards[i];
