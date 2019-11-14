@@ -90,6 +90,8 @@ function loadBoard() {
     // }
     document.getElementById("loader").style.display="none";
     document.getElementById("gameboard").style.display="grid";
+    document.getElementById("score").style.display = "flex";
+    document.getElementById("diceroll").style.display = "flex";
     const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
     for(let i = 0; i <childBoards.length;i++){
         let childBoard = childBoards[i];
@@ -100,8 +102,10 @@ function loadBoard() {
 var Init;
 
 function InitStart(){
+    document.getElementById("loader").style.display = "block";
     Init =  setTimeout(loadBoard,3000);
 }
 
-document.getElementsByTagName("body")[0].onload = InitStart;
+// document.getElementsByTagName("body")[0].onload = InitStart;
 document.getElementById("roll").onclick = diceRoll;
+document.getElementById("start").onclick = InitStart;

@@ -93,6 +93,7 @@ footer{
     padding: 20px;
     text-align: center;
     grid-area:dice;
+    display: none;
 }
 
 .dice{
@@ -151,6 +152,7 @@ main{
     ". . . . field25 fieldr2 field19 . . . ."
     ". . . . field24 fieldr1 field20 . . . ."
     ". . . . field23 field22 field21 . . . .";
+    min-width: 600px;
 }
 
 .field{
@@ -195,6 +197,7 @@ main{
 .score{
     grid-area:score;
     text-align: center;
+    display: none;
 }
 
 #loader {
@@ -210,6 +213,7 @@ main{
     height: 100px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
+    display: none;
   }
 
   @-webkit-keyframes spin {
