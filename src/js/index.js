@@ -93,6 +93,24 @@ switch (dice_value) {
 
 function loadBoard() {
     console.log("aaa");
+    // for(let i= 1; i <=30; i++){
+    //     document.getElementById(i).style.gridArea = "field"+ i;
+    // }
+
+    const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
+    console.log(childBoards);
+    for(let i = 0; i <childBoards.length;i++){
+        console.log("dupa");
+        let childBoard = childBoards[i];
+        childBoard.style.gridArea = childBoard.id;
+    }
 }
 
+var Init;
+
+function InitStart(){
+    Init =  setTimeout(loadBoard,3000);
+}
+
+document.getElementsByTagName("body")[0].onload = InitStart;
 document.getElementById("roll").onclick = diceRoll;

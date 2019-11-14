@@ -117,6 +117,25 @@ main{
 .gameboard{
     display: grid;
     grid-area: gameboard;
-    grid-template-columns: 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px;
-    grid-template-rows: 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px 40px 10px;
+    grid-template-columns:50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-areas:    
+    ". . . . field1 field2 field3 . . . ."
+    ". . . . field40 fieldb field4 . . . ."
+    ". . . . field39 fieldb field5 . . . ."
+    ". . . . field38 fieldb field6 . . . ."
+    "field33 field34 field35 field36 field37 fieldb field7 field8 field9 field10 field11"
+    "field32 fieldg fieldg fieldg fieldg . fieldy fieldy fieldy fieldy field12"
+    "field31 field30 field29 field28 field27 fieldr field17 field16 field15 field14 field13"
+    ". . . . field26 fieldr field18 . . . ."
+    ". . . . field25 fieldr field19 . . . ."
+    ". . . . field24 fieldr field20 . . . ."
+    ". . . . field23 field22 field21 . . . .";
+}
+
+.field{
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+    background-color:white;
 }
