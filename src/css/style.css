@@ -1,0 +1,112 @@
+body {
+    height: 100%;
+    margin: 0;
+    background-color: darkgray;
+    font-size: 20px;
+    font-family: 'Aldrich';
+}
+
+.content{
+    height: 100%;
+    display: block;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 60px;
+    color: lightblue;
+    justify-content: center;
+    display: block;
+    margin: 10px 10px;
+}
+
+button{
+    display: block;
+    border:none;
+    border-radius: 8px;
+    padding:10px 20px;
+    background-color: lightblue;
+    color:darkgray;
+    font-size:30px;
+    text-transform: uppercase;
+    margin: 10px 10px;
+}
+
+button:focus{
+    outline:none;
+}
+
+button:hover{
+    background-color: white;
+    color:darkgray;
+}
+
+footer{
+    font-size:10px;
+    padding: 20px;
+    background-color: lightblue;
+    color:darkgray;
+    bottom: 0px;
+    position: fixed;
+    width:100%;
+    text-align: center;
+}
+
+/* DICE ROLL PART */
+.diceroll{
+    font-size:12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.dice{
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    border-radius: 8px;
+    display: grid;
+    grid-template-rows: 10px 20px 10px 20px 10px 20px 10px;
+    grid-template-columns: 10px 20px 10px 20px 10px 20px 10px;
+    grid-template-areas: 
+    ". . . . . . ."
+    ". eye1 . eye2 . eye3 ."
+    ". . . . . . ."
+    ". eye4 . eye5 . eye6 ."
+    ". . . . . . ."
+    ". eye7 . eye8 . eye9 .";
+}
+
+.diceeye{
+    background-color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0px;
+    padding:0px;
+    display:inline-block;
+}
+main{
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto;
+}
