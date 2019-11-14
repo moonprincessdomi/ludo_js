@@ -96,6 +96,9 @@ function loadBoard() {
     for(let i = 0; i <childBoards.length;i++){
         let childBoard = childBoards[i];
         childBoard.style.gridArea = childBoard.id;
+        console.log(childBoard.id);
+        console.log(childBoard.style.gridArea);
+
     }
 }
 
