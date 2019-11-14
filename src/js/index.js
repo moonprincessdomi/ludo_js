@@ -98,9 +98,7 @@ function loadBoard() {
     // }
 
     const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
-    console.log(childBoards);
     for(let i = 0; i <childBoards.length;i++){
-        console.log("dupa");
         let childBoard = childBoards[i];
         childBoard.style.gridArea = childBoard.id;
     }

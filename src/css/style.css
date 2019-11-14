@@ -8,15 +8,22 @@ body {
 
 .content{
     height: 100%;
+    width: 100%;
     display: grid;
     grid-auto-columns: min-content;
+    grid-template-rows: 100px 100px auto 100px;
+    grid-template-areas: 
+    "nav"
+    "start"
+    "main"
+    "footer";
 }
 
 nav{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 20px 0;
+    grid-area: nav;
 }
 
 /* header{
@@ -70,6 +77,7 @@ footer{
     position: fixed;
     width:100%;
     text-align: center;
+    grid-area: footer;
 }
 
 /* DICE ROLL PART */
@@ -112,24 +120,28 @@ main{
     grid-template-rows: auto;
     grid-template-areas: 
     "dice . gameboard";
+    grid-area: main;
 }
+
+/*GAMEBOARD PART*/
 
 .gameboard{
     display: grid;
     grid-area: gameboard;
+    grid-gap:5px;
     grid-template-columns:50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
     grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
     grid-template-areas:    
     ". . . . field1 field2 field3 . . . ."
-    ". . . . field40 fieldb field4 . . . ."
-    ". . . . field39 fieldb field5 . . . ."
-    ". . . . field38 fieldb field6 . . . ."
-    "field33 field34 field35 field36 field37 fieldb field7 field8 field9 field10 field11"
-    "field32 fieldg fieldg fieldg fieldg . fieldy fieldy fieldy fieldy field12"
-    "field31 field30 field29 field28 field27 fieldr field17 field16 field15 field14 field13"
-    ". . . . field26 fieldr field18 . . . ."
-    ". . . . field25 fieldr field19 . . . ."
-    ". . . . field24 fieldr field20 . . . ."
+    ". . . . field40 fieldb1 field4 . . . ."
+    ". . . . field39 fieldb2 field5 . . . ."
+    ". . . . field38 fieldb3 field6 . . . ."
+    "field33 field34 field35 field36 field37 fieldb4 field7 field8 field9 field10 field11"
+    "field32 fieldg1 fieldg2 fieldg3 fieldg4 . fieldy4 fieldy3 fieldy2 fieldy1 field12"
+    "field31 field30 field29 field28 field27 fieldr4 field17 field16 field15 field14 field13"
+    ". . . . field26 fieldr3 field18 . . . ."
+    ". . . . field25 fieldr2 field19 . . . ."
+    ". . . . field24 fieldr1 field20 . . . ."
     ". . . . field23 field22 field21 . . . .";
 }
 
@@ -138,4 +150,36 @@ main{
     height: 100%;
     width:100%;
     background-color:white;
+}
+
+.bluefield{
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+    background-color:blue;
+}
+
+.redfield{
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+    background-color:RED;
+}
+
+.greenfield{
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+    background-color:green;
+}
+
+.yellowfield{
+    border-radius: 50%;
+    height: 100%;
+    width:100%;
+    background-color:yellow;
+}
+
+.start{
+    grid-area: start;
 }
