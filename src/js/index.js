@@ -103,6 +103,9 @@ var Init;
 
 function InitStart(){
     document.getElementById("loader").style.display = "block";
+    document.getElementById("gameboard").style.display = "none";
+    document.getElementById("diceroll").style.display = "none";
+    document.getElementById("score").style.display = "none";
     Init =  setTimeout(loadBoard,3000);
 }
 
