@@ -10,13 +10,10 @@
         <section class = "content">
             <nav>
                 <h1>Ludo</h1>
-                <button>new game</button>
+                <button id="newgame">new game</button>
                 <button>resume game</button>
                 <button>score</button>
             </nav>
-            <section class="start" id="start">
-                <button>start</button>
-            </section>
             <main>
                 <section class="diceroll" id="diceroll">
                     <h2>Press button to roll a dice.</h2>
@@ -26,23 +23,23 @@
                 <div id="loader"></div>
                 <section class="gameboard" id="gameboard">
                     <div class= "field" id="field1"></div><div class= "field" id="field2"></div><div class= "bluefield" id="field3"></div>
-                    <div class= "field" id="field40"></div><div class= "bluefield" id="fieldb1"></div><div class= "field" id="field4"></div>
-                    <div class= "field" id="field39"></div><div class= "bluefield" id="fieldb2"></div><div class= "field" id="field5"></div>
-                    <div class= "field" id="field38"></div><div class= "bluefield" id="fieldb3"></div><div class= "field" id="field6"></div>
+                    <div class= "field" id="field40"></div><div class= "bluefield" id="fieldblue1"></div><div class= "field" id="field4"></div>
+                    <div class= "field" id="field39"></div><div class= "bluefield" id="fieldblue2"></div><div class= "field" id="field5"></div>
+                    <div class= "field" id="field38"></div><div class= "bluefield" id="fieldblue3"></div><div class= "field" id="field6"></div>
                     
-                    <div class= "greenfield" id="field33"></div><div class= "field" id="field34"></div><div class= "field" id="field35"></div><div class= "field" id="field36"></div><div class= "field" id="field37"></div><div class= "bluefield" id="fieldb4"></div></div><div class= "field" id="field7"></div><div class= "field" id="field8"></div><div class= "field" id="field9"></div><div class= "field" id="field10"></div><div class= "field" id="field11"></div>
-                    <div class= "field" id="field32"></div><div class= "greenfield" id="fieldg1"></div><div class= "greenfield" id="fieldg2"></div><div class= "greenfield" id="fieldg3"></div><div class= "greenfield" id="fieldg4"></div><div class= "yellowfield" id="fieldy4"></div><div class= "yellowfield" id="fieldy3"></div><div class= "yellowfield" id="fieldy2"></div><div class= "yellowfield" id="fieldy1"></div><div class= "field" id="field12"></div>
-                    <div class= "field" id="field31"></div><div class= "field" id="field30"></div><div class= "field" id="field29"></div><div class= "field" id="field28"></div><div class= "field" id="field27"></div><div class= "redfield" id="fieldr4"></div><div class= "field" id="field17"></div><div class= "field" id="field16"></div><div class= "field" id="field15"></div><div class= "field" id="field14"></div><div class= "yellowfield" id="field13"></div>
+                    <div class= "greenfield" id="field33"></div><div class= "field" id="field34"></div><div class= "field" id="field35"></div><div class= "field" id="field36"></div><div class= "field" id="field37"></div><div class= "bluefield" id="fieldblue4"></div></div><div class= "field" id="field7"></div><div class= "field" id="field8"></div><div class= "field" id="field9"></div><div class= "field" id="field10"></div><div class= "field" id="field11"></div>
+                    <div class= "field" id="field32"></div><div class= "greenfield" id="fieldgreen1"></div><div class= "greenfield" id="fieldgreen2"></div><div class= "greenfield" id="fieldgreen3"></div><div class= "greenfield" id="fieldgreen4"></div><div class= "yellowfield" id="fieldyellow4"></div><div class= "yellowfield" id="fieldyellow3"></div><div class= "yellowfield" id="fieldyellow2"></div><div class= "yellowfield" id="fieldyellow1"></div><div class= "field" id="field12"></div>
+                    <div class= "field" id="field31"></div><div class= "field" id="field30"></div><div class= "field" id="field29"></div><div class= "field" id="field28"></div><div class= "field" id="field27"></div><div class= "redfield" id="fieldred4"></div><div class= "field" id="field17"></div><div class= "field" id="field16"></div><div class= "field" id="field15"></div><div class= "field" id="field14"></div><div class= "yellowfield" id="field13"></div>
 
-                    <div class= "field" id="field26"></div><div class= "redfield" id="fieldr3"></div><div class= "field" id="field18"></div>
-                    <div class= "field" id="field25"></div><div class= "redfield" id="fieldr2"></div><div class= "field" id="field19"></div>
-                    <div class= "field" id="field24"></div><div class= "redfield" id="fieldr1"></div><div class= "field" id="field20"></div>
+                    <div class= "field" id="field26"></div><div class= "redfield" id="fieldred3"></div><div class= "field" id="field18"></div>
+                    <div class= "field" id="field25"></div><div class= "redfield" id="fieldred2"></div><div class= "field" id="field19"></div>
+                    <div class= "field" id="field24"></div><div class= "redfield" id="fieldred1"></div><div class= "field" id="field20"></div>
                     <div class= "redfield" id="field23"></div><div class= "field" id="field22"></div><div class= "field" id="field21"></div>
 
-                    <div class= "redfield" id="pawnr1"></div><div class= "redfield" id="pawnr2"></div><div class= "redfield" id="pawnr3"></div><div class= "redfield" id="pawnr4"></div>
-                    <div class= "yellowfield" id="pawny1"></div><div class= "yellowfield" id="pawny2"></div><div class= "yellowfield" id="pawny3"></div><div class= "yellowfield" id="pawny4"></div>
-                    <div class= "bluefield" id="pawnb1"></div><div class= "bluefield" id="pawnb2"></div><div class= "bluefield" id="pawnb3"></div><div class= "bluefield" id="pawnb4"></div>
-                    <div class= "greenfield" id="pawng1"></div><div class= "greenfield" id="pawng2"></div><div class= "greenfield" id="pawng3"></div><div class= "greenfield" id="pawng4"></div>
+                    <div class= "redfield" id="pawnred1"></div><div class= "redfield" id="pawnred2"></div><div class= "redfield" id="pawnred3"></div><div class= "redfield" id="pawnred4"></div>
+                    <div class= "yellowfield" id="pawnyellow1"></div><div class= "yellowfield" id="pawnyellow2"></div><div class= "yellowfield" id="pawnyellow3"></div><div class= "yellowfield" id="pawnyellow4"></div>
+                    <div class= "bluefield" id="pawnblue1"></div><div class= "bluefield" id="pawnblue2"></div><div class= "bluefield" id="pawnblue3"></div><div class= "bluefield" id="pawnblue4"></div>
+                    <div class= "greenfield" id="pawngreen1"></div><div class= "greenfield" id="pawngreen2"></div><div class= "greenfield" id="pawngreen3"></div><div class= "greenfield" id="pawngreen4"></div>
 
                 </section>
                 <section class="score" id="score">
