@@ -1,4 +1,9 @@
+html{
+    height: 100%;
+}
+
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
 } 
@@ -6,29 +11,21 @@ body {
 .content{
     height: 100%;
     width: 100%;
-    position:absolute;
-    display: grid;
-    grid-auto-columns: 100%;
-    grid-template-rows: 100px 60px auto 100px;
-    grid-auto-rows: max-content;
-    grid-gap: 10px;
-    grid-template-areas: 
-    "nav"
-    "start"
-    "main"
-    "footer";
+    display: flex;
     margin: 0;
     padding: 0;
     background-color: darkgray;
+    align-items: center;
+    justify-content: space-between;
     font-size: 20px;
     font-family: 'Aldrich';
+    flex-direction: column;
 }
 
 nav{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    grid-area: nav;
 }
 
 /* header{
@@ -73,6 +70,8 @@ button:hover{
     color:darkgray;
 }
 
+/*FOOTER*/
+
 footer{
     font-size:10px;
     background-color: lightblue;
@@ -80,11 +79,11 @@ footer{
     bottom: 0px;
     width:100%;
     text-align: center;
-    grid-area: footer;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    max-height: 100px;
 }
 
 /* DICE ROLL PART */
@@ -129,7 +128,7 @@ main{
     grid-template-rows: auto;
     grid-template-areas: 
     ". dice . gameboard . score .";
-    grid-area: main;
+    min-height: 600px;
 }
 
 /*GAMEBOARD PART*/
@@ -153,6 +152,7 @@ main{
     ". pawnr3 pawnr4 . field24 fieldr1 field20 . pawny3 pawny4 ."
     ". . . . field23 field22 field21 . . . .";
     min-width: 600px;
+    min-height: 600px;
 }
 
 .field{
@@ -188,10 +188,6 @@ main{
     height: 100%;
     width:100%;
     background-color:yellow;
-}
-
-.start{
-    grid-area: start;
 }
 
 .score{

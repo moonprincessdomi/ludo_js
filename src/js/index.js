@@ -112,6 +112,6 @@ function InitStart(){
     Init =  setTimeout(loadBoard,3000);
 }
 
-// document.getElementsByTagName("body")[0].onload = InitStart;
+//document.getElementsByTagName("body")[0].onload = InitStart;
 document.getElementById("roll").onclick = diceRoll;
 document.getElementById("start").onclick = InitStart;
