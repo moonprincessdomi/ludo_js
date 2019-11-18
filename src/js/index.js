@@ -12,14 +12,18 @@ function loadElement(element, sectionName) {
 
 function movePawn(diceScore, pawn, color){
     console.log(pawn.style.gridArea);
-    if(1){
+    let recentfield = pawn.style.gridArea.split("/");
+    recentfield = recentfield[0].replace(/\s+/g, '');
+    console.log(recentfield);
+    console.log(pawn.id);
+    if(`m${recentfield}` === pawn.id){
         console.log("jeju");
         pawn.style.gridArea = "field33";
         console.log(pawn.style.gridArea); 
+        recentfield = pawn.style.gridArea.split("/");
+        recentfield = recentfield[0].replace(/\s+/g, '');
     }
-    let recentfield = pawn.style.gridArea.split("/");
-    console.log(recentfield);
-    recentfield = Number(recentfield[0].replace('field',''));
+    recentfield = Number(recentfield.replace('field',''));
     console.log(recentfield);
     let newfield = (recentfield + diceScore) % 40;
     console.log(newfield);
