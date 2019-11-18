@@ -8,6 +8,24 @@ function loadElement(element, sectionName) {
     return newElement;
 }
 
+/*MOVE PAWN*/
+
+function movePawn(diceScore, pawn, color){
+    console.log(pawn.style.gridArea);
+    if(1){
+        console.log("jeju");
+        pawn.style.gridArea = "field33";
+        console.log(pawn.style.gridArea); 
+    }
+    let recentfield = pawn.style.gridArea.split("/");
+    console.log(recentfield);
+    recentfield = Number(recentfield[0].replace('field',''));
+    console.log(recentfield);
+    let newfield = (recentfield + diceScore) % 40;
+    console.log(newfield);
+    pawn.style.gridArea = `field${newfield}`;
+}
+
 /*DICE ROLL FUNCTION*/
 
 function diceRoll() {
@@ -16,7 +34,6 @@ function diceRoll() {
         document.getElementById("dice").removeChild(document.getElementById("dice").firstChild);
     }
     let dice_value = Math.floor((Math.random() * 6) + 1);
-    console.log(dice_value);
     /*LOAD NEW DICEEYE*/
 
     for (let i = 1; i <= dice_value; i++) {
@@ -81,15 +98,16 @@ switch (dice_value) {
         default:
             break;
     }
+    movePawn(dice_value,document.getElementById("mpawngreen1"),"green" );
+    return dice_value;
 }
 
 const PLAYERS = ["green", "red", "yellow", "blue"];
 
+/* GAMEBOARD LOADING FUNCTION*/
+
 function loadBoard() {
-    console.log("aaa");
-    // for(let i= 1; i <=30; i++){
-    //     document.getElementById(i).style.gridArea = "field"+ i;
-    // }
+    //diceRoll();
     document.getElementById("loader").style.display="none";
     document.getElementById("gameboard").style.display="grid";
     document.getElementById("score").style.display = "flex";
@@ -98,11 +116,7 @@ function loadBoard() {
     for(let i = 0; i <childBoards.length;i++){
         let childBoard = childBoards[i];
         childBoard.style.gridArea = childBoard.id;
-        //console.log(childBoard.id);
-        //console.log(childBoard.style.gridArea);
     }
-
-    
 
     // const pawns = {};
     // PLAYERS.forEach(color => {
@@ -113,9 +127,9 @@ function loadBoard() {
     // });
 }
 
+/*FUNCTION START NEW GAME */
 
 function Start(){
-    console.log("start");
     const pawns = PLAYERS.reduce((prev, color) => {
         prev[color] = [];
         for(let i =1; i <=4; i++){
@@ -125,12 +139,15 @@ function Start(){
             newpawn.className = `pawn ${color}field`;
             newpawn.style.gridArea = `pawn${color}${i}`;
             document.getElementById("gameboard").appendChild(newpawn);
+            //console.log(document.getElementById(`mpawn${color}${i}`).style.gridArea);
         }
         return prev;
     }, {});
 }
 
 var Init;
+
+/*INITIALIZATION FUNCTION*/
 
 function InitStart(){
     document.getElementById("loader").style.display = "block";
