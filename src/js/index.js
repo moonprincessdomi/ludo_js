@@ -10,24 +10,59 @@ function loadElement(element, sectionName) {
 
 /*MOVE PAWN*/
 
-function movePawn(diceScore, pawn, color){
-    console.log(pawn.style.gridArea);
+function movePawn(diceScore, pawn, color) {
+    let startfield;
+
+    switch (color) {
+        case "green":
+            startfield = 33;
+            break;
+        case "red":
+            startfield = 23;
+            break;
+        case "blue":
+            startfield = 3;
+            break;
+        case "yellow":
+            startfield = 13;
+            break;
+    }
+
     let recentfield = pawn.style.gridArea.split("/");
     recentfield = recentfield[0].replace(/\s+/g, '');
-    console.log(recentfield);
-    console.log(pawn.id);
-    if(`m${recentfield}` === pawn.id){
-        console.log("jeju");
-        pawn.style.gridArea = "field33";
-        console.log(pawn.style.gridArea); 
-        recentfield = pawn.style.gridArea.split("/");
-        recentfield = recentfield[0].replace(/\s+/g, '');
+    if (`m${recentfield}` === pawn.id && diceScore == 6) {
+        pawn.style.gridArea = `field${startfield}`;
+        return;
     }
-    recentfield = Number(recentfield.replace('field',''));
-    console.log(recentfield);
-    let newfield = (recentfield + diceScore) % 40;
-    console.log(newfield);
-    pawn.style.gridArea = `field${newfield}`;
+    else if (`m${recentfield}` === pawn.id && diceScore != 6) {
+        return;
+    }
+    else if (recentfield.startsWith(`field${color}`)) {
+        recentfield = recentfield.replace('field', '');
+        recentfield = Number(recentfield.replace(`${color}`, ''));
+
+        let newfield = recentfield + diceScore;
+        if (newfield > 4) {
+            return;
+        }
+        else {
+            pawn.style.gridArea = `field${color}${newfield}`;
+            return;
+        }
+    }
+
+    recentfield = Number(recentfield.replace('field', ''));
+    let newfield = (recentfield + diceScore > 40) ? ((recentfield + diceScore) % 40) : (recentfield + diceScore);
+
+    if (recentfield < startfield && newfield >= startfield) {
+        newfield = newfield - startfield - 1;
+        if (newfield > 4) {
+            return;
+        }
+        pawn.style.gridArea = `field${color}${newfield}`;
+    } else {
+        pawn.style.gridArea = `field${newfield}`;
+    }
 }
 
 /*DICE ROLL FUNCTION*/
@@ -44,8 +79,8 @@ function diceRoll() {
         let new_element = loadElement("diceeye" + i, "dice");
         new_element.className = "diceeye";
     }
-    
-switch (dice_value) {
+
+    switch (dice_value) {
         case 1:
             document.getElementById("diceeye1").style.gridArea = "eye5";
             break;
@@ -64,14 +99,14 @@ switch (dice_value) {
             document.getElementById("diceeye3").style.gridArea = "eye9";
             break;
         case 4:
-             /*1 eye*/
-             document.getElementById("diceeye1").style.gridArea = "eye1";
-             /*2 eye*/
-             document.getElementById("diceeye2").style.gridArea = "eye7";
-             /*3 eye*/
-             document.getElementById("diceeye3").style.gridArea = "eye3";
-             /*4 eye*/
-             document.getElementById("diceeye4").style.gridArea = "eye9";
+            /*1 eye*/
+            document.getElementById("diceeye1").style.gridArea = "eye1";
+            /*2 eye*/
+            document.getElementById("diceeye2").style.gridArea = "eye7";
+            /*3 eye*/
+            document.getElementById("diceeye3").style.gridArea = "eye3";
+            /*4 eye*/
+            document.getElementById("diceeye4").style.gridArea = "eye9";
             break;
         case 5:
             /*1 eye*/
@@ -102,7 +137,7 @@ switch (dice_value) {
         default:
             break;
     }
-    movePawn(dice_value,document.getElementById("mpawngreen1"),"green" );
+    movePawn(dice_value, document.getElementById("mpawngreen1"), "green");
     return dice_value;
 }
 
@@ -112,12 +147,12 @@ const PLAYERS = ["green", "red", "yellow", "blue"];
 
 function loadBoard() {
     //diceRoll();
-    document.getElementById("loader").style.display="none";
-    document.getElementById("gameboard").style.display="grid";
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("gameboard").style.display = "grid";
     document.getElementById("score").style.display = "flex";
     document.getElementById("diceroll").style.display = "flex";
     const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
-    for(let i = 0; i <childBoards.length;i++){
+    for (let i = 0; i < childBoards.length; i++) {
         let childBoard = childBoards[i];
         childBoard.style.gridArea = childBoard.id;
     }
@@ -133,10 +168,10 @@ function loadBoard() {
 
 /*FUNCTION START NEW GAME */
 
-function Start(){
+function Start() {
     const pawns = PLAYERS.reduce((prev, color) => {
         prev[color] = [];
-        for(let i =1; i <=4; i++){
+        for (let i = 1; i <= 4; i++) {
             prev[color].push(document.getElementById(`pawn${color}${i}`));
             let newpawn = document.createElement("div");
             newpawn.id = `mpawn${color}${i}`;
@@ -153,12 +188,12 @@ var Init;
 
 /*INITIALIZATION FUNCTION*/
 
-function InitStart(){
+function InitStart() {
     document.getElementById("loader").style.display = "block";
     document.getElementById("gameboard").style.display = "none";
     document.getElementById("diceroll").style.display = "none";
     document.getElementById("score").style.display = "none";
-    Init =  setTimeout(loadBoard,3000);
+    Init = setTimeout(loadBoard, 3000);
 }
 
 document.getElementsByTagName("body")[0].onload = InitStart;
