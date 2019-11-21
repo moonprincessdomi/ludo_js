@@ -55,7 +55,7 @@ function movePawn(diceScore, pawn, color) {
     let newfield = (recentfield + diceScore > 40) ? ((recentfield + diceScore) % 40) : (recentfield + diceScore);
 
     if (recentfield < startfield && newfield >= startfield) {
-        newfield = newfield - startfield - 1;
+        newfield = newfield - startfield + 1;
         if (newfield > 4) {
             return;
         }
