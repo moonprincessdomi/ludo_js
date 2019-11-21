@@ -65,6 +65,20 @@ function movePawn(diceScore, pawn, color) {
     }
 }
 
+const PLAYERS = ["green", "red", "yellow", "blue"];
+let activePlayer = PLAYERS[0];
+
+/*CHANGE PLAYER FUNCTION*/
+
+function changePlayer(){
+    for (let i=0; PLAYERS.length > i;i++){
+        if(activePlayer === PLAYERS[i]){
+            activePlayer = PLAYERS[(i+1)%4];
+            break;
+        }
+    }
+}
+
 /*DICE ROLL FUNCTION*/
 
 function diceRoll() {
@@ -137,11 +151,10 @@ function diceRoll() {
         default:
             break;
     }
-    movePawn(dice_value, document.getElementById("mpawngreen1"), "green");
+    movePawn(dice_value, document.getElementById(`mpawn${activePlayer}1`), activePlayer);
+    changePlayer();
     return dice_value;
 }
-
-const PLAYERS = ["green", "red", "yellow", "blue"];
 
 /* GAMEBOARD LOADING FUNCTION*/
 
