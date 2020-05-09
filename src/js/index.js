@@ -10,8 +10,25 @@ function loadElement(element, sectionName) {
 
 /*MOVE PAWN*/
 
-function movePawn(diceScore, pawn, color) {
+async function movePawn(diceScore, color) {
     let startfield;
+    let iterpopup = 0;
+    for(let i = 1;i<5;i++){
+        let recentfield = document.getElementById(`mpawn${color}${i}`).style.gridArea.split("/");
+        recentfield = recentfield[0].replace(/\s+/g, '');
+        if(recentfield == `pawn${color}${i}` && diceScore != 6){
+            document.getElementById(`pawnbutton${i}`).style.display = "none";
+            iterpopup++;
+        }
+        else{
+            document.getElementById(`pawnbutton${i}`).style.display = "block";
+        }
+    }
+    let pawnnumber = 1;
+    if(iterpopup < 4){
+        pawnnumber = await selectPawn();
+    }
+    let pawn = document.getElementById(`mpawn${color}${pawnnumber}`);
 
     switch (color) {
         case "green":
@@ -79,9 +96,46 @@ function changePlayer(){
     }
 }
 
+/*SELECTPAWN FUNCTION */
+
+async function selectPawn(recentfield){
+    let pawn = await openPawnPopup();
+    modal.style.display = "none";
+    return pawn;
+}
+
+/*ADD PAWN FUNCTION*/
+function addPawn(){
+    selectPawn();
+}
+
+/*OPEN PAWN POPUP FUNCTION*/
+function openPawnPopup(){
+    modal.style.display = "block";
+    return new Promise((resolve, reject) => {
+        document.getElementById("pawnbutton1").onclick = e => resolve(1);
+        document.getElementById("pawnbutton2").onclick = e => resolve(2);
+        document.getElementById("pawnbutton3").onclick = e => resolve(3);
+        document.getElementById("pawnbutton4").onclick = e => resolve(4);
+    });
+}
+
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+
 /*DICE ROLL FUNCTION*/
 
-function diceRoll() {
+async function diceRoll() {
     /*DELETE RECENT DICEEYE*/
     while (document.getElementById("dice").hasChildNodes()) {
         document.getElementById("dice").removeChild(document.getElementById("dice").firstChild);
@@ -150,8 +204,8 @@ function diceRoll() {
             break;
         default:
             break;
-    }
-    movePawn(dice_value, document.getElementById(`mpawn${activePlayer}1`), activePlayer);
+    }    
+    await movePawn(dice_value, activePlayer);
     changePlayer();
     return dice_value;
 }
@@ -169,7 +223,6 @@ function loadBoard() {
         let childBoard = childBoards[i];
         childBoard.style.gridArea = childBoard.id;
     }
-
     // const pawns = {};
     // PLAYERS.forEach(color => {
     //     pawns[color] = [];
