@@ -90,8 +90,12 @@ let activePlayer = PLAYERS[0];
 function changePlayer(){
     for (let i=0; PLAYERS.length > i;i++){
         if(activePlayer === PLAYERS[i]){
+            document.getElementById(`hplayer${activePlayer}`).style.color = `${activePlayer}`;
             activePlayer = PLAYERS[(i+1)%4];
             break;
+        }
+        else{
+            document.getElementById(`hplayer${PLAYERS[i]}`).style.color = `black`;
         }
     }
 }
@@ -121,17 +125,6 @@ function openPawnPopup(){
 }
 
 var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
 
 /*DICE ROLL FUNCTION*/
 
@@ -216,7 +209,7 @@ function loadBoard() {
     //diceRoll();
     document.getElementById("loader").style.display = "none";
     document.getElementById("gameboard").style.display = "grid";
-    document.getElementById("score").style.display = "flex";
+    document.getElementById("activeplayer").style.display = "flex";
     document.getElementById("diceroll").style.display = "flex";
     const childBoards = document.getElementById("gameboard").getElementsByTagName("div");
     for (let i = 0; i < childBoards.length; i++) {
@@ -235,10 +228,12 @@ function loadBoard() {
 /*FUNCTION START NEW GAME */
 
 function Start() {
-    const pawns = PLAYERS.reduce((prev, color) => {
-        prev[color] = [];
+    for (const color of PLAYERS) {
+        for (const pawn of document.getElementsByClassName(`pawn ${color}field`)) {
+            pawn.remove();
+        }
         for (let i = 1; i <= 4; i++) {
-            prev[color].push(document.getElementById(`pawn${color}${i}`));
+            document.getElementById(`pawn${color}${i}`);
             let newpawn = document.createElement("div");
             newpawn.id = `mpawn${color}${i}`;
             newpawn.className = `pawn ${color}field`;
@@ -246,8 +241,7 @@ function Start() {
             document.getElementById("gameboard").appendChild(newpawn);
             //console.log(document.getElementById(`mpawn${color}${i}`).style.gridArea);
         }
-        return prev;
-    }, {});
+    }
 }
 
 var Init;
@@ -258,7 +252,7 @@ function InitStart() {
     document.getElementById("loader").style.display = "block";
     document.getElementById("gameboard").style.display = "none";
     document.getElementById("diceroll").style.display = "none";
-    document.getElementById("score").style.display = "none";
+    document.getElementById("activeplayer").style.display = "none";
     Init = setTimeout(loadBoard, 3000);
 }
 
